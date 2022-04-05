@@ -4,6 +4,7 @@ SRC0   = $(wildcard src/*.cpp)
 SRCS   = $(SRC0:src/PolycarpExample.cpp=)
 OBJS   = $(SRCS:.cpp=.o)
 INCLUDEFLAGS = -Iinclude 
+LINKFMT = -lfmt
 CXXFLAGS = $(INCLUDEFLAGS) -Wall -O 
 
 all: lib example
@@ -22,7 +23,12 @@ example:
 	@echo "** To run PolycarpExample type:"
 	@echo "./PolycarpExample"
 
+polycarpdetect: lib
+	@echo
+	@echo "** Building Polycarp detection example"
+	$(CXX) -o PolycarpDetection $(CXXFLAGS) src/PolycarpDetectionExample.cpp $(LINKFMT) lib/PolyCARP.a 
+
 clean:
-	rm -f PolycarpExample $(OBJS) lib/PolyCARP.a
+	rm -f PolycarpExample PolycarpDetectionExample $(OBJS) lib/PolyCARP.a 
 
 .PHONY: all lib example
