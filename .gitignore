@@ -2,6 +2,9 @@
 *.class
 *~
 *.old
+.vscode
 tmp/
 C++/PolycarpExample
+C++/PolycarpDetection
 .DS_Store
+
